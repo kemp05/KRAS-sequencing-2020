@@ -1,0 +1,13 @@
+KRAS analysis
+
+566 samples, only four amplicons
+SLX-14586 (FLD0193-384), SLX-14589 (FLD0193-374) and SLX-14590 (FLD0193-384) KRAS+mimic amplicon sequencing
+Each sample amplified in duplicate each with different KRAS primer pair + corresponding mimic primers
+Fluidigm barcode sample indexing (CS1 and CS2 adapters)
+Sequenced by Illumina MiSeq 150 bp PE
+Obtained sample demultiplexed fastq files from Genomics/Bioinformatics core services
+All fours amplicons >150 bp therefore no need to trim reads prior to merging
+Corresponding forward and reverse reads were merged using PANDAseq 2.11 with default options
+Used NUCLEOTIDE_COUNT_FOR_KRAS.pl (on each amplicon separately) to make a flat file of counts for all position/nucleotides for all samples.
+Used HASH_KRAS.pl (on each amplicon flat file above) to calculate mean and st.dev. for every position/nucleotide count of all samples and then call SNVs greater than some threshold allele frequency.
+Cora then manually curated these calls.
